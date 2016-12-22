@@ -76,3 +76,10 @@ body.album {
 		margin: auto;
 	}
 }
+
+button{
+	position: relative;
+	left: 20%;
+	margin-top: 1rem;
+	width: 60%
+}
