@@ -13,6 +13,27 @@ var albumPicasso={
 	]
 };
 
+var albumGrey = {
+	title: 'The Grey Album',
+	artist: 'The Beatles vs Jay-z',
+	label: 'bootleg',
+	year: '2004',
+	albumArtUrl: 'assets/images/album_covers/Grey.jpg',
+	songs: [
+		{title: 'Public Service Announcement', duration: '2:45'},
+		{title: 'What More Can I Say', duration: '4:25'},
+		{title: 'Encore', duration: '2:40'},
+		{title: 'December 4th', duration: '3:34'},
+		{title: '99 Problems', duration: '4:06'},
+		{title: 'Dirt Off Your Shoulder', duration: '3:59'},
+		{title: 'Change Clothes', duration: '4:00'},
+		{title: 'Allure', duration: '4:04'},
+		{title: 'Justify My Thug', duration: '4:06'},
+		{title: 'Lucifer 9 (Interlude)', duration: '4:12'},
+		{title: 'My 1st Song', duration: '2:01'}
+	]
+};
+
 var albumMarconi = {
 	title: 'The Telephone',
 	artist: 'Guglielmo Marconi',
@@ -49,7 +70,7 @@ var setCurrentAlbum = function(album){
 	
 	albumTitle.firstChild.nodeValue = album.title;
 	albumArtist.firstChild.nodeValue = album.artist;
-	albumReleaseInfo.firstChild.nodeValue = album.year + ' ' + album.lable;
+	albumReleaseInfo.firstChild.nodeValue = album.year + ' ' + album.label;
 	albumImage.setAttribute('src', album.albumArtUrl);
 	
 	albumSongList.innerHTML = '';
@@ -61,6 +82,6 @@ var setCurrentAlbum = function(album){
 };
 
 window.onload = function(){
-	setCurrentAlbum(albumPicasso);
+	setCurrentAlbum(albumGrey);
 //	setCurrentAlbum(albumMarconi);
 };
