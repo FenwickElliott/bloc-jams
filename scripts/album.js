@@ -81,7 +81,22 @@ var setCurrentAlbum = function(album){
 	
 };
 
+var albums = [albumMarconi, albumPicasso, albumGrey];
+
+document.getElementById("next").addEventListener("click", scroll);
+
+var i=0;
+
+function scroll(){
+	if(i>=3){
+		i=-1;
+	}
+	i++;
+	setCurrentAlbum(albums[i]);
+
+}
+
 window.onload = function(){
-	setCurrentAlbum(albumGrey);
-//	setCurrentAlbum(albumMarconi);
+	setCurrentAlbum(albums[i]);
+
 };
