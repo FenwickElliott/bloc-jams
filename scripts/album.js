@@ -69,6 +69,8 @@ var playButtonTemplate = '<a class="album-song-button"><span class="ion-play"></
 window.onload = function(){
 	setCurrentAlbum(albumMarconi); // I prefer seeing Marconi
 	
+	
+	
 	songListContainer.addEventListener('mouseover', function(event){
 		if (event.target.parentElement.className === 'album-view-song-item'){
 			console.log(event);
