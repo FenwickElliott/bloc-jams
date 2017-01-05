@@ -116,7 +116,7 @@ var currentlyPlayingSong = null;
 window.onload = function(){
 	setCurrentAlbum(albumMarconi); // I prefer seeing Marconi
 	
-songListContainer.addEventListener('mouseover', function(event){
+	songListContainer.addEventListener('mouseover', function(event){
 		if (event.target.parentElement.className === 'album-view-song-item'){
 			console.log(event);
 			event.target.parentElement.querySelector('.song-item-number').innerHTML = playButtonTemplate;
@@ -126,7 +126,14 @@ songListContainer.addEventListener('mouseover', function(event){
 	
 	for (var i=0; i<songRows.length; i++){
 		songRows[i].addEventListener('mouseleave', function(event){
-			this.children[0].innerHTML = this.children[0].getAttribute('data-song-number');
+			 var songItem = getSongItem(event.target);
+             var songItemNumber = songItem.getAttribute('data-song-number');
+ 
+             if (songItemNumber !== currentlyPlayingSong) {
+                 songItem.innerHTML = songItemNumber;
+             } else if (songItemNumber === currentlyPlayingSong){
+				 songItem.innerHTML = pauseButtonTemplate;
+			 }
 		});
 		
 		songRows[i].addEventListener('click', function(e){
