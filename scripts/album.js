@@ -49,7 +49,7 @@ var setCurrentAlbum = function(album){
 	
 	albumTitle.firstChild.nodeValue = album.title;
 	albumArtist.firstChild.nodeValue = album.artist;
-	albumReleaseInfo.firstChild.nodeValue = album.year + ' ' + album.lable;
+	albumReleaseInfo.firstChild.nodeValue = album.year + ' ' + album.label;
 	albumImage.setAttribute('src', album.albumArtUrl);
 	
 	albumSongList.innerHTML = '';
@@ -68,6 +68,8 @@ var playButtonTemplate = '<a class="album-song-button"><span class="ion-play"></
 
 window.onload = function(){
 	setCurrentAlbum(albumMarconi); // I prefer seeing Marconi
+	
+	
 	
 	songListContainer.addEventListener('mouseover', function(event){
 		if (event.target.parentElement.className === 'album-view-song-item'){
