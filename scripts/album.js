@@ -66,23 +66,35 @@ var songRows = document.getElementsByClassName('album-view-song-item');
 
 var playButtonTemplate = '<a class="album-song-button"><span class="ion-play"></span></a>';
 
+var pauseButtonTemplate = '<a class="album-song-button"><span class="ion-pause"></span></a>';
+
 window.onload = function(){
 	setCurrentAlbum(albumMarconi); // I prefer seeing Marconi
 	
+	songListContainer.addEventListener('click', function(e){
+		if (e.target.parentElement.className === 'album-view-song-item'){
+			e.target.parentElement.querySelector('.song-item-number').innerHTML = pauseButtonTemplate;
+		}
+	})
 	
 	
 	songListContainer.addEventListener('mouseover', function(event){
+		if (event.target.parentElement.querySelector('.song-item-number').innerHTML !== pauseButtonTemplate){
 		if (event.target.parentElement.className === 'album-view-song-item'){
-			console.log(event);
-			event.target.parentElement.querySelector('.song-item-number').innerHTML = playButtonTemplate;
+				event.target.parentElement.querySelector('.song-item-number').innerHTML = playButtonTemplate;
+			}
 		}
 	
 	});
 	
 	for (var i=0; i<songRows.length; i++){
 		songRows[i].addEventListener('mouseleave', function(event){
-			this.children[0].innerHTML = this.children[0].getAttribute('data-song-number');
+			if (event.target.parentElement.querySelector('.song-item-number').innerHTML !== pauseButtonTemplate){
+				this.children[0].innerHTML = this.children[0].getAttribute('data-song-number');
+			}
 		});
 	}
+	
+	
 };
 
