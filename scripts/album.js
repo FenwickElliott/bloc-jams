@@ -61,7 +61,9 @@ var setCurrentAlbum = function(album){
 };
 
 var findParentByClassName = function(element, targetClass) {
-    if (element) {
+	if (element.parentElement.className === undefined){
+		alert("No parent found");
+	} else if (element) {
         var currentParent = element.parentElement;
         while (currentParent.className != targetClass && currentParent.className !== null) {
             currentParent = currentParent.parentElement;
@@ -115,6 +117,9 @@ var currentlyPlayingSong = null;
 
 window.onload = function(){
 	setCurrentAlbum(albumMarconi); // I prefer seeing Marconi
+//	setCurrentAlbum(albumPicasso);
+	
+	alert(findParentByClassName('html', "blah"));
 	
 	songListContainer.addEventListener('mouseover', function(event){
 		if (event.target.parentElement.className === 'album-view-song-item'){

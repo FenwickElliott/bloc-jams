@@ -101,3 +101,9 @@ body.album {
 		margin: auto;
 	}
 }
+
+@media (max-width: 640px){
+	body.album{
+		padding-bottom: 230px;
+	}
+}
