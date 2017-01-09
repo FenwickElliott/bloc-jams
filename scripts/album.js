@@ -61,12 +61,21 @@ var setCurrentAlbum = function(album){
 };
 
 var findParentByClassName = function(element, targetClass) {
-	if (element.parentElement.className === undefined){
-		alert("No parent found");
-	} else if (element) {
+	alert("parent: " + element.parentElement.className);
+
+	if (element.parentElement === undefined){
+		alert(element + ": No parent found");
+	}
+	else if (element.closest(targetClass) === undefined) {
+        alert("No parent found with that class name");
+    } 
+	else if (element) {
         var currentParent = element.parentElement;
         while (currentParent.className != targetClass && currentParent.className !== null) {
             currentParent = currentParent.parentElement;
+//			if(currentParent === undefined){
+//				alert("No parent found with that class name");
+//			}
         }
         return currentParent;
     }
@@ -88,6 +97,7 @@ var getSongItem = function(element) {
         default:
             return;
     }  
+	
 };
 
 var clickHandler = function(targetElement){
@@ -119,7 +129,12 @@ window.onload = function(){
 	setCurrentAlbum(albumMarconi); // I prefer seeing Marconi
 //	setCurrentAlbum(albumPicasso);
 	
-	alert(findParentByClassName('html', "blah"));
+//	findParentByClassName('album-song-button', "blah");
+	
+	document.addEventListener('click', function(e){
+		console.log('clicked: '+ e.target);
+		alert(findParentByClassName(e.target, 'song-item-number'));
+	});
 	
 	songListContainer.addEventListener('mouseover', function(event){
 		if (event.target.parentElement.className === 'album-view-song-item'){
