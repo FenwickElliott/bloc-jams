@@ -90,7 +90,7 @@ var setCurrentAlbum = function(album){
 	
 	$albumTitle.text(album.title);
 	$albumArtist.text(album.artist);
-	$albumReleaseInfo.text(album.year + ' ' + album.lebel);
+	$albumReleaseInfo.text(album.year + ' ' + album.label);
 	$albumImage.attr('src', album.albumArtUrl);
 	
 	$albumSongList.empty();
