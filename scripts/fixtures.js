@@ -5,11 +5,33 @@ var albumPicasso={
 	year: '1881',
 	albumArtUrl: 'assets/images/album_covers/01.png',
 	songs: [
-		{title: 'Blue', duration: '4:26'},
-		{title: 'Green', duration: '3:14'},
-		{title: 'Red', duration: '5:01'},
-		{title: 'Pink', duration: '3:21'},
-		{title: 'Magenta', duration: '2:15'}
+		{title: 'Blue', duration: '4:26', audioUrl: 'assets/music/blue'},
+		{title: 'Green', duration: '3:14', audioUrl: 'assets/music/green'},
+		{title: 'Red', duration: '5:01', audioUrl: 'assets/music/red'},
+		{title: 'Pink', duration: '3:21', audioUrl: 'assets/music/pink'},
+		{title: 'Magenta', duration: '2:15', audioUrl: 'assets/music/magenta'}
+	]
+};
+
+var albumGrey = {
+	title: 'The Grey Album',
+	artist: 'The Beatles vs Jay-z',
+	label: 'bootleg',
+	year: '2004',
+	albumArtUrl: 'assets/images/album_covers/Grey.jpg',
+	songs: [
+		{title: 'Public Service Announcement', duration: '2:45', audioUrl: 'assets/music/01Public'},
+		{title: 'What More Can I Say', duration: '4:25', audioUrl: 'assets/music/02What'},
+		{title: 'Encore', duration: '2:40', audioUrl: 'assets/music/03Encore'},
+		{title: 'December 4th', duration: '3:34', audioUrl: 'assets/music/04December'},
+		{title: '99 Problems', duration: '4:06', audioUrl: 'assets/music/0599'},
+		{title: 'Dirt Off Your Shoulder', duration: '3:59', audioUrl: 'assets/music/06Dirt'},
+		{title: 'Moment of Clarity', duration: '4:00', audioUrl: 'assets/music/07Moment'},
+		{title: 'Change Clothes', duration: '4:00', audioUrl: 'assets/music/08Change'},
+		{title: 'Allure', duration: '4:04', audioUrl: 'assets/music/09Allure'},
+		{title: 'Justify My Thug', duration: '4:06', audioUrl: 'assets/music/10Justify'},
+		{title: 'Lucifer 9 (Interlude)', duration: '4:12', audioUrl: 'assets/music/11Interlude'},
+		{title: 'My 1st Song', duration: '2:01', audioUrl: 'assets/music/12My'}
 	]
 };
 
