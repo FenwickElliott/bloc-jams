@@ -20,15 +20,13 @@ var createSongRow = function(songNumber, songName, songLength){
 	if (currentlyPlayingSongNumber  !== songNumber) {
 		// Switch from Play -> Pause button to indicate new song is playing.
 		$(this).html(pauseButtonTemplate);
-		currentlyPlayingSongNumber  = songNumber;
-		currentSongFromAlbum = currentAlbum.songs[songNumber-1];
+		setSong(songNumber);
 		updatePlayerBarSong();
 	} else if (currentlyPlayingSongNumber  === songNumber) {
 		// Switch from Pause -> Play button to pause currently playing song.
 		$(this).html(playButtonTemplate);
 		$('.main-controls .play-pause').html(playerBarPlayButton);
-		currentlyPlayingSongNumber  = null;
-		currentSongFromAlbum = null;
+
 	}
 };
 	
@@ -41,7 +39,6 @@ var createSongRow = function(songNumber, songName, songLength){
 	};
 	
 	var offHover = function(){
-		console.log("songNumber type is " + typeof songNumber + "\n and currentlyPlayingSongNumber type is " + typeof currentlyPlayingSongNumber);
 		var songNumberCell = $(this).find('.song-item-number');
 		var songNumber = parseInt(songNumberCell.attr('data-song-number'));
 		if (songNumber !== currentlyPlayingSongNumber ){
@@ -95,8 +92,8 @@ var nextSong = function() {
     }
     
     // Set a new current song
-    currentlyPlayingSongNumber = currentSongIndex + 1;
-    currentSongFromAlbum = currentAlbum.songs[currentSongIndex];
+	setSong(currentSongIndex+1);
+	
 
     // Update the Player Bar information
     $('.currently-playing .song-name').text(currentSongFromAlbum.title);
@@ -110,7 +107,7 @@ var nextSong = function() {
     
     $nextSongNumberCell.html(pauseButtonTemplate);
     $lastSongNumberCell.html(lastSongNumber);
-    
+
 };
 
 var previousSong = function() {
@@ -130,8 +127,8 @@ var previousSong = function() {
     }
     
     // Set a new current song
-    currentlyPlayingSongNumber = currentSongIndex + 1;
-    currentSongFromAlbum = currentAlbum.songs[currentSongIndex];
+	
+	setSong(currentSongIndex+1);
 
     // Update the Player Bar information
     $('.currently-playing .song-name').text(currentSongFromAlbum.title);
@@ -147,12 +144,21 @@ var previousSong = function() {
     $lastSongNumberCell.html(lastSongNumber);
 };
     
-
 var updatePlayerBarSong = function (){
 	$('.player-bar .currently-playing .song-name').text(currentSongFromAlbum.title);
 	$('.player-bar .currently-playing .artist-name').text(currentAlbum.title);
 	$('.player-bar .currently-playing .artist-song-mobile').text(currentSongFromAlbum.title + " - " + currentAlbum.title);
 	$('.main-controls .play-pause').html(playerBarPauseButton);
+};
+
+var setSong = function (songNumber){
+	
+	currentSongFromAlbum = currentAlbum.songs[songNumber-1];
+	currentlyPlayingSongNumber = songNumber;
+};
+
+var getSongNumberCell = function (number){
+	
 };
 	
 var playButtonTemplate = '<a class="album-song-button"><span class="ion-play"></span></a>';
@@ -171,5 +177,6 @@ $(document).ready(function(){
 	setCurrentAlbum(albumMarconi); // I prefer seeing Marconi
 	$previousButton.click(previousSong);
     $nextButton.click(nextSong);
+
 });
 
