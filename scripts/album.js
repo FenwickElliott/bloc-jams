@@ -175,6 +175,13 @@ var setSong = function (songNumber){
 		formats: ['mp3'],
 		preload: true
 	});
+	setVolume(currentVolume);
+};
+
+var setVolume = function(volume){
+	if (currentSoundFile){
+		currentSoundFile.setVolume(volume);
+	}
 };
 
 var getSongNumberCell = function (number){
