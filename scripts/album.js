@@ -155,6 +155,27 @@ var previousSong = function() {
     $previousSongNumberCell.html(pauseButtonTemplate);
     $lastSongNumberCell.html(lastSongNumber);
 };
+
+var togglePlayFromPlayerBar = function(){
+	
+	if (currentSoundFile === null){
+		//play first track
+		setSong(1);
+		$("[data-song-number='1']").html(pauseButtonTemplate);
+	}
+		
+	if (currentSoundFile.isPaused()) {
+		//resume currently playing song
+		currentSoundFile.play();
+		$('.main-controls .play-pause').html(playerBarPauseButton);
+		$('.album-song-button').html(pauseButtonTemplate);
+	} else {
+		//pause currently playing song
+		currentSoundFile.pause();
+		$('.main-controls .play-pause').html(playerBarPlayButton);
+		$('.album-song-button').html(playButtonTemplate);
+	}
+};
     
 var updatePlayerBarSong = function (){
 	$('.player-bar .currently-playing .song-name').text(currentSongFromAlbum.title);
@@ -201,11 +222,12 @@ var currentVolume = 80;
 
 var $previousButton = $('.main-controls .previous');
 var $nextButton = $('.main-controls .next');
+var $playPause = $('.main-controls .play-pause');
 
 $(document).ready(function(){
 	setCurrentAlbum(albumGrey); // I prefer seeing Marconi
 	$previousButton.click(previousSong);
     $nextButton.click(nextSong);
-
+	$playPause.click(togglePlayFromPlayerBar);
 });
 
