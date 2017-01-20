@@ -337,5 +337,6 @@ $(document).ready(function(){
 	$previousButton.click(previousSong);
     $nextButton.click(nextSong);
 	$playPause.click(togglePlayFromPlayerBar);
+	setVolume(80);
 });
 
